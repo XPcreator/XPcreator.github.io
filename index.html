@@ -4,13 +4,24 @@
     <style>
         body {
             margin: 0;
-            padding: 40px; 
+            padding: 50px; 
             height: 100vh;
             background: linear-gradient(to bottom, #000000, #8b0000);
             overflow: hidden;
             display: flex;
+            flex-direction: column; /* Stacks the text on top of the box */
             align-items: flex-start; 
             justify-content: flex-start;
+            font-family: 'Arial Black', Gadget, sans-serif; /* Thick, game-style font */
+        }
+
+        /* The "Market" Header Text */
+        .market-title {
+            color: white;
+            font-size: 70px;      /* Big and bold like the screenshot */
+            margin-bottom: 30px;  /* Space between text and the pack */
+            margin-top: 0;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.3); /* Gives it that 3D look */
         }
 
         .red-box {
@@ -19,40 +30,34 @@
             background-color: #ff0000;
             border: 6px solid #660000;
             border-radius: 30px;
-            
             cursor: pointer;
             outline: none;
-
-            /* This makes the growing and glowing look smooth, not jumpy */
             transition: all 0.3s ease; 
-            
-            /* The default shadow (very subtle) */
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* --- THE MOUSE OVER EFFECT --- */
+        /* Mouse over effect */
         .red-box:hover {
-            transform: scale(1.05); /* Increases size by 5% */
-            background-color: #ff1a1a; /* Brightens the red slightly */
-            
-            /* The cool light effect: A big, bright red glow */
+            transform: scale(1.05);
+            background-color: #ff1a1a;
             box-shadow: 0 0 50px rgba(255, 0, 0, 0.8); 
         }
 
-        /* --- THE CLICK EFFECT --- */
+        /* Click effect */
         .red-box:active {
-            transform: scale(0.95); /* Shrinks when you press down */
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+            transform: scale(0.95);
         }
     </style>
 </head>
 <body>
 
+    <h1 class="market-title">Market</h1>
+
     <button class="red-box" onclick="boxClicked()"></button>
 
     <script>
         function boxClicked() {
-            console.log("You clicked the glowing pack!");
+            console.log("Opening pack from the market!");
         }
     </script>
 
