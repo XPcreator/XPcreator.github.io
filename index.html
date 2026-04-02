@@ -4,23 +4,19 @@
     <style>
         body {
             margin: 0;
-            /* Increased top padding to 100px to move everything down */
-            padding: 100px 50px 50px 50px; 
+            padding: 100px 50px; 
             height: 100vh;
             background: linear-gradient(to bottom, #000000, #8b0000);
             overflow: hidden;
             display: flex;
             flex-direction: column; 
             align-items: flex-start; 
-            justify-content: flex-start;
             font-family: 'Arial Black', Gadget, sans-serif;
         }
 
         .market-title {
             color: white;
             font-size: 70px;
-            /* Reset margin-top to 0 so it follows the body padding */
-            margin-top: 0;
             margin-bottom: 30px;
             text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
         }
@@ -32,30 +28,80 @@
             border: 6px solid #660000;
             border-radius: 30px;
             cursor: pointer;
-            outline: none;
             transition: all 0.3s ease; 
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
-        .red-box:hover {
-            transform: scale(1.05);
-            background-color: #ff1a1a;
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.8); 
+        .red-box:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(255, 0, 0, 0.8); }
+
+        /* --- THE POP-UP SYSTEM --- */
+
+        /* This darkens the whole background */
+        #overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark see-through black */
+            z-index: 10; /* Keeps it on top of everything */
+            justify-content: center;
+            align-items: center;
         }
 
-        .red-box:active {
-            transform: scale(0.95);
+        /* The actual confirm box */
+        .confirm-box {
+            width: 500px;
+            padding: 40px;
+            background-color: #000000;
+            border: 5px solid #ff0000; /* Red outline */
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .confirm-text {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .close-btn {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Arial Black';
         }
     </style>
 </head>
 <body>
 
     <h1 class="market-title">Market</h1>
-    <button class="red-box" onclick="boxClicked()"></button>
+    <button class="red-box" onclick="showPopup()"></button>
+
+    <div id="overlay">
+        <div class="confirm-box">
+            <p class="confirm-text">Are you sure you want to open the Untitled pack?</p>
+            <button class="close-btn" onclick="hidePopup()">CANCEL</button>
+        </div>
+    </div>
 
     <script>
-        function boxClicked() {
-            alert("Pack opened!");
+        // Find the overlay in the HTML
+        const overlay = document.getElementById('overlay');
+
+        // Show it when clicking the pack
+        function showPopup() {
+            overlay.style.display = "flex";
+        }
+
+        // Hide it when clicking cancel
+        function hidePopup() {
+            overlay.style.display = "none";
         }
     </script>
 
