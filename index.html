@@ -4,24 +4,25 @@
     <style>
         body {
             margin: 0;
-            padding: 50px; 
+            /* Increased top padding to 100px to move everything down */
+            padding: 100px 50px 50px 50px; 
             height: 100vh;
             background: linear-gradient(to bottom, #000000, #8b0000);
             overflow: hidden;
             display: flex;
-            flex-direction: column; /* Stacks the text on top of the box */
+            flex-direction: column; 
             align-items: flex-start; 
             justify-content: flex-start;
-            font-family: 'Arial Black', Gadget, sans-serif; /* Thick, game-style font */
+            font-family: 'Arial Black', Gadget, sans-serif;
         }
 
-        /* The "Market" Header Text */
         .market-title {
             color: white;
-            font-size: 70px;      /* Big and bold like the screenshot */
-            margin-bottom: 30px;  /* Space between text and the pack */
+            font-size: 70px;
+            /* Reset margin-top to 0 so it follows the body padding */
             margin-top: 0;
-            text-shadow: 4px 4px 0px rgba(0,0,0,0.3); /* Gives it that 3D look */
+            margin-bottom: 30px;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
         }
 
         .red-box {
@@ -36,14 +37,12 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* Mouse over effect */
         .red-box:hover {
             transform: scale(1.05);
             background-color: #ff1a1a;
             box-shadow: 0 0 50px rgba(255, 0, 0, 0.8); 
         }
 
-        /* Click effect */
         .red-box:active {
             transform: scale(0.95);
         }
@@ -52,12 +51,11 @@
 <body>
 
     <h1 class="market-title">Market</h1>
-
     <button class="red-box" onclick="boxClicked()"></button>
 
     <script>
         function boxClicked() {
-            console.log("Opening pack from the market!");
+            alert("Pack opened!");
         }
     </script>
 
