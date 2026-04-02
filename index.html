@@ -4,29 +4,30 @@
     <style>
         body {
             margin: 0;
-            padding: 0;
+            padding: 20px; /* This acts as a 'buffer' so the box isn't touching the very edge */
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background: linear-gradient(to bottom, #000000, #8b0000);
             overflow: hidden;
+            /* Removed the "center" commands so the box goes to the top left by default */
         }
 
-        /* Our Red Box Button */
         .red-box {
-            width: 100px;         /* Equal width... */
-            height: 100px;        /* ...and height makes a square */
+            width: 150px;         /* Made it bigger (was 100px) */
+            height: 150px;        /* Made it bigger (was 100px) */
             background-color: #ff0000;
-            border: 4px solid #660000; /* A darker red border for depth */
+            border: 4px solid #660000;
+            
+            /* Round Corners */
+            border-radius: 25px;  /* Higher number = more round */
+            
             cursor: pointer;
             transition: transform 0.1s;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); /* A slight red glow */
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            outline: none;        /* Removes the default blue focus ring */
         }
 
         .red-box:active {
-            transform: scale(0.9); /* Shrinks slightly when clicked */
-            background-color: #d00000;
+            transform: scale(0.95);
         }
     </style>
 </head>
@@ -36,8 +37,7 @@
 
     <script>
         function boxClicked() {
-            console.log("The red box was clicked!");
-            // We can add more logic here later!
+            console.log("Corner box clicked!");
         }
     </script>
 
