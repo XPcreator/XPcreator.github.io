@@ -4,53 +4,66 @@
     <style>
         body {
             margin: 0;
-            padding: 30px; /* Increased padding for the larger box */
+            padding: 40px; 
             height: 100vh;
             background: linear-gradient(to bottom, #000000, #8b0000);
             overflow: hidden;
+            display: flex;
+            align-items: flex-start; /* Keeps it at the top */
+            justify-content: flex-start; /* Keeps it at the left */
         }
 
-        /* The Pack Button */
-        .pack-button {
-            width: 200px;         /* Larger size */
-            height: 200px;        /* Larger size */
+        /* The Main Pack Container */
+        .pack-card {
+            width: 320px;         /* Match the scale of the Blooket market boxes */
+            height: 320px;        
             background-color: #ff0000;
-            border: 6px solid #660000; /* Thicker border for the bigger box */
-            border-radius: 35px;  /* Smoother round corners */
-            
+            border-radius: 25px;
+            border: none;
             cursor: pointer;
-            transition: all 0.2s ease; /* Makes animations smooth */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            position: relative;    /* Allows us to put the blue bar inside it */
+            overflow: hidden;      /* Clips the blue bar so it follows the round corners */
+            box-shadow: 0 12px 0 rgba(0,0,0,0.3); /* Adds that 'thick' bottom depth */
+            transition: transform 0.1s, box-shadow 0.1s;
             outline: none;
-            
-            /* Center the text/icon if we add one later */
+            padding: 0;
+        }
+
+        /* The Blue Bar at the bottom (like the '25 tokens' bar) */
+        .pack-bottom-bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #3a81e0; /* That classic Blooket blue */
             display: flex;
             align-items: center;
             justify-content: center;
+            border-top: 4px solid rgba(0,0,0,0.1);
         }
 
-        /* Effect when you hover over the pack */
-        .pack-button:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
-            background-color: #ff1a1a;
+        /* Interaction Effects */
+        .pack-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 17px 0 rgba(0,0,0,0.2);
         }
 
-        /* Effect when you actually click it */
-        .pack-button:active {
-            transform: scale(0.9);
-            background-color: #b30000;
+        .pack-card:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 rgba(0,0,0,0.4);
         }
     </style>
 </head>
 <body>
 
-    <button class="pack-button" onclick="openPack()"></button>
+    <button class="pack-card" onclick="openPack()">
+        <div class="pack-bottom-bar">
+            </div>
+    </button>
 
     <script>
         function openPack() {
-            console.log("Pack Opening animation starts here!");
-            // Later, we can add code here to make a Blook pop out!
+            console.log("Opening the red pack...");
         }
     </script>
 
