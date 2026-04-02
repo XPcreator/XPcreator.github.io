@@ -1,39 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>My Remix Game</title>
     <style>
-        body { background: #4b2ea3; color: white; font-family: 'Arial', sans-serif; text-align: center; }
-        .game-card { background: white; color: #333; width: 400px; margin: 50px auto; padding: 20px; border-radius: 15px; box-shadow: 0 10px 0 #333; }
-        .btn { background: #0bc2cf; border: none; padding: 15px 30px; color: white; border-radius: 10px; cursor: pointer; font-size: 18px; margin: 5px; transition: 0.2s; }
-        .btn:hover { transform: scale(1.1); background: #0db3bf; }
-        #gold-count { font-size: 30px; color: gold; text-shadow: 2px 2px #000; }
+        /* This creates your Black and Red Gradient */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* Gradient: Starts black at top, turns dark red at bottom */
+            background: linear-gradient(to bottom, #000000, #8b0000);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* Keeps the screen from scrolling */
+        }
+
+        #game-container {
+            text-align: center;
+        }
+
+        .main-button {
+            padding: 20px 40px;
+            font-size: 24px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px #660000;
+            transition: 0.1s;
+        }
+
+        .main-button:active {
+            box-shadow: 0 2px #660000;
+            transform: translateY(3px);
+        }
     </style>
 </head>
 <body>
 
-    <h1>MY REMIX GAME</h1>
-    <div id="gold-count">Gold: 0</div>
-
-    <div class="game-card">
-        <h2 id="question">What is 5 + 5?</h2>
-        <div id="answers">
-            <button class="btn" onclick="checkAnswer(true)">10</button>
-            <button class="btn" onclick="checkAnswer(false)">12</button>
-        </div>
+    <div id="game-container">
+        <h1>THE REMIX</h1>
+        <p>Score: <span id="score-val">0</span></p>
+        <button class="main-button" onclick="addPoint()">TAP TO START</button>
     </div>
 
     <script>
-        let gold = 0;
+        let score = 0;
+        const scoreDisplay = document.getElementById('score-val');
 
-        function checkAnswer(isCorrect) {
-            if (isCorrect) {
-                gold += 100;
-                alert("Correct! +100 Gold");
-            } else {
-                alert("Wrong! Try again.");
-            }
-            document.getElementById('gold-count').innerText = "Gold: " + gold;
+        function addPoint() {
+            score++;
+            scoreDisplay.innerText = score;
         }
     </script>
+
 </body>
 </html>
