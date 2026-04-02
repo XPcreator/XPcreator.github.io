@@ -4,40 +4,53 @@
     <style>
         body {
             margin: 0;
-            padding: 20px; /* This acts as a 'buffer' so the box isn't touching the very edge */
+            padding: 30px; /* Increased padding for the larger box */
             height: 100vh;
             background: linear-gradient(to bottom, #000000, #8b0000);
             overflow: hidden;
-            /* Removed the "center" commands so the box goes to the top left by default */
         }
 
-        .red-box {
-            width: 150px;         /* Made it bigger (was 100px) */
-            height: 150px;        /* Made it bigger (was 100px) */
+        /* The Pack Button */
+        .pack-button {
+            width: 200px;         /* Larger size */
+            height: 200px;        /* Larger size */
             background-color: #ff0000;
-            border: 4px solid #660000;
-            
-            /* Round Corners */
-            border-radius: 25px;  /* Higher number = more round */
+            border: 6px solid #660000; /* Thicker border for the bigger box */
+            border-radius: 35px;  /* Smoother round corners */
             
             cursor: pointer;
-            transition: transform 0.1s;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-            outline: none;        /* Removes the default blue focus ring */
+            transition: all 0.2s ease; /* Makes animations smooth */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            outline: none;
+            
+            /* Center the text/icon if we add one later */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .red-box:active {
-            transform: scale(0.95);
+        /* Effect when you hover over the pack */
+        .pack-button:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+            background-color: #ff1a1a;
+        }
+
+        /* Effect when you actually click it */
+        .pack-button:active {
+            transform: scale(0.9);
+            background-color: #b30000;
         }
     </style>
 </head>
 <body>
 
-    <button class="red-box" onclick="boxClicked()"></button>
+    <button class="pack-button" onclick="openPack()"></button>
 
     <script>
-        function boxClicked() {
-            console.log("Corner box clicked!");
+        function openPack() {
+            console.log("Pack Opening animation starts here!");
+            // Later, we can add code here to make a Blook pop out!
         }
     </script>
 
